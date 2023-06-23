@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="jscolor.js"></script>
+    <title>Etch A Sketch</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="control-div">
+            <div class="color-picker-div">
+                <input type="text" class="jscolor color-picker" value="rgb(39, 55, 77)">
+                <!-- <input type="color" class="color-picker" name="" id=""> -->
+            </div>
+            <div class="color-mode-div">
+                <button class="color-mode-btn">Color mode</button>
+            </div>
+            <div class="magic-mode-div">
+                <button class="magic-mode-btn">Magic mode</button>
+            </div>
+            <div class="eraser-div">
+                <button class="eraser-btn">Eraser</button>
+            </div>
+            <div class="clear-div">
+                <button class="clear-btn">Clear</button>
+            </div>
+        </div>
+        <div class="grid-container">
+
+        </div>
+    </div>
+    <div class="xxx"></div>
+    <script src="script.js"></script>
+    <script>
+        jscolor.installByClassName("jscolor");
+    </script>
+</body>
+
+</html>
