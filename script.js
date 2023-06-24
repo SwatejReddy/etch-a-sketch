@@ -86,11 +86,18 @@ function deColorIt(){
 
 //We are calling the 'colorIt' when the page loads with the default color in 'currColor':
 colorIt();
+//lit up/highlight the colorModeBtn of reload as default:
+colorModeBtn.style.border = `2px solid red`;
 
 //whenever again, colorModeBtn is pressed, 'colorIt()' is invoked, enabling the coloring with whatever color is present in 'currColor':
 colorModeBtn.addEventListener("click", function(){
   //stop magic mode and then update currColor to whatever color the picker has:
   stopMagicColor();
+  //highlight the button that is clicked and remvove highlight from the other buttons:
+  magicModeBtn.style.border = ``;
+  eraserBtn.style.border = ``;
+  colorModeBtn.style.border = `2px solid red`;
+
   currColor = colorPicker.value;
 
   colorIt();
@@ -100,9 +107,42 @@ colorModeBtn.addEventListener("click", function(){
 eraserBtn.addEventListener("click", function(){
   //stop magic mode and then update currColor to whatever color the picker has:
   stopMagicColor();
+  //highlight the button that is clicked and remvove highlight from the other buttons:
+  colorModeBtn.style.border = ``;
+  magicModeBtn.style.border = ``;
+  eraserBtn.style.border = `2px solid red`;
+
   currColor = colorPicker.value;
 
   deColorIt();
+})
+
+//whenever clearBtn is pressed, the entire grid will be set to white:
+clearBtn.addEventListener("click", function(){
+  //stop magic mode and then update currColor to whatever color the picker has:
+  stopMagicColor();
+
+  //highlight the button that is clicked and remvove highlight from the other buttons:
+  magicModeBtn.style.border = ``;
+  eraserBtn.style.border = ``;
+  colorModeBtn.style.border = ``;
+
+  currColor = colorPicker.value;
+
+  //set the button highlight:
+  clearBtn.style.border = `5px solid blue`;
+  //wait for 200ms and then clear the button's highlight up and then, go back to the colorModeBtn and highlight it:
+  setTimeout(() => {
+    clearBtn.style.border = ``;
+    colorModeBtn.style.border = `2px solid red`;
+  }, 200);
+
+  //set the entire grid to white:
+  boxes.forEach((box) => {
+    box.style.backgroundColor = "white";
+  });
+
+  colorIt();
 })
 
 //generates a random color:
@@ -115,18 +155,6 @@ function randColor(){
   return color;
 }
 
-//whenever clearBtn is pressed, the entire grid will be set to white:
-clearBtn.addEventListener("click", function(){
-  //stop magic mode and then update currColor to whatever color the picker has:
-  stopMagicColor();
-  currColor = colorPicker.value;
-
-  boxes.forEach((box) => {
-    box.style.backgroundColor = "white";
-  });
-})
-
-
 //when invoked, stops magic color:
 function stopMagicColor(){
   clearInterval(colorInterval);
@@ -135,6 +163,9 @@ function stopMagicColor(){
 //upon clicking 'magicModeBtn', starts calling 'randColor' every 50ms:
 magicModeBtn.addEventListener("click", function(){
     colorIt();
+    colorModeBtn.style.border = ``;
+    eraserBtn.style.border = ``;
+    magicModeBtn.style.border = `2px solid red`;
     colorInterval = setInterval(() => {
     currColor = randColor();
     }, 10);
