@@ -14,7 +14,7 @@ let colorInterval;
 
 
 //creates a grid:
-for (let i = 0; i < 64; i++) {
+for (let i = 0; i < 3600; i++) {
   const newDiv = document.createElement('div');
   newDiv.className = 'box';
   newDiv.id = `box-${gridCount}`;
