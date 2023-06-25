@@ -20,7 +20,7 @@ body {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 80%;
   align-items: center;
   justify-content: center;
@@ -28,11 +28,12 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 70px);
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(60, 1fr);
   margin-right: 20px;
-  width: 50%;
-  height: 50%;
+  /* width: 500px; */
+  width: 500px;
+  height: 500px;
   background-color: red;
 }
 
